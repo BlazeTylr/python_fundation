@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 
 # == INSTRUCTIONS ==
 #
@@ -54,7 +54,7 @@ class Greeter():
 #   <Animal object at 0x7f8b8c0b8e80>
 class Animal():
     def __init__(self):
-        
+      pass  
 
 # Class name: Vehicle
 # Purpose: a generic vehicle
@@ -164,8 +164,21 @@ class StringFormatter():
 #   1
 #   > calculator.divide(6, 2)
 #   3.0
-
-
+class Calculator():
+    def __init__(self):
+        pass
+    
+    def add(self, num1, num2):
+        return num1 + num2
+    
+    def multiply(self, num1, num2):
+        return num1 * num2
+    
+    def subtract(self, num1, num2):
+        return num1 - num2
+    
+    def divide(self, num1, num2):
+        return num1 / num2
 
 # Class name: Apprentice
 # Purpose: represents an apprentice
@@ -190,7 +203,13 @@ class StringFormatter():
 #   'June 2030'
 #   > apprentice.format_details()
 #   'Rita Smith, June 2030'
+class Apprentice():
+    def __init__(self, name, cohort):
+        self.name = name
+        self.cohort = cohort
 
+    def format_details(self):
+        return f'{self.name}, {self.cohort}'
 
 
 # Class name: Cohort
@@ -225,4 +244,19 @@ class StringFormatter():
 #   92
 
 
+class Cohort():
+    def __init__(self, name, start_date, end_date):
+        self.name = name
+        self.start_date = start_date
+        self.end_date = end_date
+
+    def calculate_duration(self):
+        date_format = '%Y-%m-%d'
+
+        day1 = datetime.strptime(self.end_date, date_format)
+        day2 = datetime.strptime(self.start_date, date_format)
+
+        elapsed_days = (day1 - day2).days
+
+        return elapsed_days
 
