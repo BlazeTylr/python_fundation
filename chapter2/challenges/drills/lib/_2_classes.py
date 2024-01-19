@@ -52,8 +52,9 @@ class Greeter():
 #   > animal = Animal()
 #   > animal
 #   <Animal object at 0x7f8b8c0b8e80>
-
-
+class Animal():
+    def __init__(self):
+        
 
 # Class name: Vehicle
 # Purpose: a generic vehicle
@@ -65,7 +66,9 @@ class Greeter():
 #   > vehicle = Vehicle()
 #   > vehicle
 #   <Vehicle object at 0x7f8b8c0b8e80>
-
+class Vehicle():
+    def __init__(self):
+        pass
 
 
 # Class name: Cat
@@ -80,8 +83,12 @@ class Greeter():
 #   > cat = Cat()
 #   > cat.speak()
 #   'miaow'
-
-
+class Cat():
+    def __init__(self):
+        pass
+    
+    def speak(self):
+        return 'miaow'
 
 # Class name: Dog
 # Purpose: woofs at the user
@@ -95,8 +102,12 @@ class Greeter():
 #   > dog = Dog()
 #   > dog.speak()
 #   'woof'
+class Dog():
+    def __init__(self):
+        pass
 
-
+    def speak(self):
+        return 'woof'
 
 # Class name: StringFormatter
 # Purpose: transforms strings
@@ -115,7 +126,15 @@ class Greeter():
 #   'HELLO'
 #   > string_formatter.lower_case('HELLO')
 #   'hello'
+class StringFormatter():
+    def __init__(self):
+        pass
 
+    def block_caps(self, str):
+        return str.upper()
+    
+    def lower_case(self, str):
+        return str.lower()
 
 
 # Class name: Calculator
