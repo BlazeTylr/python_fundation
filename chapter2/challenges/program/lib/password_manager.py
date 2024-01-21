@@ -43,4 +43,39 @@
 # == YOUR CODE ==
 
 class PasswordManager():
-    pass
+    def __init__(self):
+        # user_passes stores user services and passwords
+        self.user_passes = {}
+
+    def add(self, service, password):
+        # adds user name and password to user_passes if they are valid
+        if self.is_valid(password):
+            self.user_passes[service] = password
+
+    def get_for_service(self, service):
+        # returns the user password is there is one
+        if service in self.user_passes:
+            return self.user_passes[service]
+        return None
+    
+    def list_services(self):
+        # returns all the services used by the user
+        services_list = []
+        for key, value in self.user_passes.items():
+            if value:
+                services_list.append(key)
+        return services_list
+
+    def is_valid(self, password):
+        # checking password validity
+        spec_char = ['!', '@', '$', '%', '&']
+
+        if len(password) < 8:
+            return False
+        
+        for char in spec_char:
+            if char in password:
+                return True
+        
+        return False
+
