@@ -34,7 +34,8 @@
 # A reminder of the validity rules:
 #   1. A password must be at least 8 characters long
 #   2. A password must contain at least one of the following special characters:
-#      `!`, `@`, `$`, `%` or `&`
+#
+#       `!`, `@`, `$`, `%` or `&`
 #
 # And a new rule: passwords must be unique (not reused in other services).
 #
@@ -69,4 +70,55 @@
 
 from datetime import datetime
 class PasswordManager2():
-    pass
+    def __init__(self):
+        self.user_passwords = {}
+        
+    def add(self, serv_name, password):
+        if self.password_validator(password) and self.is_unique(password):
+            self.user_passwords[serv_name] = password
+
+        
+
+    def remove(self, serv_name):
+        del self.user_passwords[serv_name]
+
+    def update(self, serv_name, password):
+        if self.password_validator(password) and self.is_unique(password):
+            self.user_passwords[serv_name] = password
+
+    def list_services(self):
+        services_with_passwords = [serv_name for serv_name, password in self.user_passwords.items() if password]
+
+        return services_with_passwords
+
+    def sort_services_by(self, arg, reverse=None):
+        services_list = list(self.user_passwords.keys())
+        sorted_list = sorted(services_list)
+
+        if reverse != None and arg == 'service':
+            return sorted_list[::-1]
+        
+        elif arg == 'service':
+            return sorted_list
+        
+        elif reverse != None:
+            return services_list[::-1]
+        else:
+            return services_list
+
+    def get_for_service(self, serv_name):
+        for key in self.user_passwords.keys():
+            if serv_name == key:
+                return self.user_passwords[key]
+        
+        return None
+
+    def password_validator(self, password):
+        return len(password) >= 8 and any(char in password for char in ['!', '@', '$', '%', '&'])
+    
+    def is_unique(self, password):
+        for passw in self.user_passwords.values():
+            if password == passw:
+                return False
+        return True
+        

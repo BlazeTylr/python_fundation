@@ -253,8 +253,8 @@ class Cohort():
     def calculate_duration(self):
         date_format = '%Y-%m-%d'
 
-        day1 = datetime.strptime(self.end_date, date_format)
-        day2 = datetime.strptime(self.start_date, date_format)
+        day1 = datetime.strptime(self.end_date, date_format).date()
+        day2 = datetime.strptime(self.start_date, date_format).date()
 
         elapsed_days = (day1 - day2).days
 
